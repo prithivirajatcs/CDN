@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cc:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms" BackgroundColor="#EFF4F5" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:EUJIT" x:Class="EUJIT.Views.EditBestPracticePage" xmlns:cc="clr-namespace:EUJIT.CustomControl;assembly=EUJIT" xmlns:res="clr-namespace:EUJIT.LangResource;assembly=EUJIT" Title="{res:Translate titleHomePage}" Style="{StaticResource ContentPageStyle}" xmlns:conv="clr-namespace:EUJIT.Converters;assembly=EUJIT">
+    <cc:BaseContentPage.Resources>
+        <ResourceDictionary>
+            <conv:ByteArrayToImageSourceConverter x:Key="byteArrayToImageSourceConverter" />
+        </ResourceDictionary>
+    </cc:BaseContentPage.Resources>
+    <Grid>
+        <StackLayout Margin="20,0,20,0" Grid.Row="0">
+            <Button Margin="0,10,0,0" BorderWidth="1" Text="Save as Draft" Command="{Binding SaveCommand}" CommandParameter="{Binding}" TextColor="#B1D027" BackgroundColor="#063649" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="42">
+            </Button>
+
+            <Label Text="Plant Location" Margin="0,15,0,0" TextColor="#5C5E60"  FontSize="15" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+            <Frame Margin="0,0,0,10" Padding="10" HasShadow="false" CornerRadius="4" OutlineColor="Transparent" BackgroundColor="#4E4F52">
+                <StackLayout Orientation="Horizontal" BackgroundColor="Transparent">
+                    <cc:CustomPicker HeightRequest="34" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="#ffffff" Title="Select Plant Location" ItemsSource="{Binding PlantLocationList}" SelectedItem="{Binding SelectedPlant}" SelectedIndex="{Binding PlantIndex}" ItemDisplayBinding="{Binding plantName}" />
+                    <Image Grid.Column="1" Source="dropdownarrow.png" HeightRequest="10" WidthRequest="10">
+                    </Image>
+                </StackLayout>
+            </Frame>
+             <Label Text="Impacted AMS Principle" Margin="0,0,0,0" TextColor="#5C5E60"  FontSize="15" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+            <Frame Margin="0,0,0,10" Padding="10" HasShadow="false" CornerRadius="4" OutlineColor="Transparent" BackgroundColor="#4E4F52">
+                <StackLayout Orientation="Horizontal" BackgroundColor="Transparent">
+                    <cc:CustomPicker HeightRequest="34" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="#ffffff" Title="Select AMS Principle here" ItemsSource="{Binding PrincipleList}" SelectedItem="{Binding SelectedPrinciple}" SelectedIndex="{Binding PrincipleIndex}" ItemDisplayBinding="{Binding princpleName}" />
+                    <Image Grid.Column="1" Source="dropdownarrow.png" HeightRequest="10" WidthRequest="10">
+                    </Image>
+                </StackLayout>
+            </Frame>
+
+            <Label Margin="0,15,0,0" Text="Max 100 Characters" TextColor="#939393" HorizontalOptions="End" VerticalOptions="FillAndExpand" FontSize="10">
+            </Label>
+            <Frame Margin="0,2,0,0" Padding="10" HasShadow="false" CornerRadius="4" OutlineColor="#B2D227" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#ffffff">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <cc:CustomEntry x:Name="txtTitle" Text="{Binding HeaderText, Mode=TwoWay}" BackgroundColor="#ffffff" Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Placeholder="Type best practices header here..." FontSize="12" PlaceholderColor="#939393" TextChanged="Handle_TextChanged">
+                    </cc:CustomEntry>
+                </Grid>
+            </Frame>
+            <StackLayout Orientation="Horizontal" Margin="0,15,0,0">
+                <Label Text="Note:" HeightRequest="11" TextColor="#CA1833" FontSize="10" HorizontalOptions="Start" VerticalOptions="FillAndExpand">
+                </Label>
+                <Label HeightRequest="15" FontAttributes="Bold" Text="Only 5 images are allowed" TextColor="#5C5E60" FontSize="10" HorizontalOptions="Start" VerticalOptions="FillAndExpand">
+                </Label>
+            </StackLayout>
+            <ListView Margin="0,10,0,0" x:Name="listOfBestPractices" ItemsSource="{Binding ImageDraftList}" Grid.Row="5" VerticalOptions="Fill" HorizontalOptions="FillAndExpand" SeparatorVisibility="None" HasUnevenRows="true" BackgroundColor="#eff4f5">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <cc:ExtendedViewCell SelectedBackgroundColor="#eff4f5">
+                            <!--<ViewCell>-->
+                            <ViewCell.View>
+                                <Grid Margin="0,10,0,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0" HorizontalOptions="StartAndExpand">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" FontSize="10" TextColor="#979797" Text="{Binding PracticeImage.pictureName}" />
+                                        <BoxView Grid.Column="1" HeightRequest="3" WidthRequest="1" BackgroundColor="#B1D027" />
+                                        <Label Grid.Column="2" FontSize="10" TextColor="#979797" Text="{Binding PracticeImage.pictureDate}" />
+                                    </Grid>
+                                    <Image Grid.Row="1" HorizontalOptions="StartAndExpand" Aspect="AspectFit" HeightRequest="70" WidthRequest="50" Source="{Binding PracticeImage.testImageSource, Converter={StaticResource byteArrayToImageSourceConverter}}" />
+                                     <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Handle_Tapped" NumberOfTapsRequired="1" />
+                                    </Image.GestureRecognizers>
+
+                                    <Label Grid.Row="2" Text="Remove Photo" HorizontalOptions="Start" TextColor="#0D3D4F">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding RemovePhotoCommand}" CommandParameter="{Binding}" NumberOfTapsRequired="1" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                    <BoxView Grid.Row="3" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#979797" />
+                                </Grid>
+                            </ViewCell.View>
+                        </cc:ExtendedViewCell>
+                        <!--</ViewCell>-->
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+         <StackLayout HorizontalOptions="FillAndExpand" x:Name="Imagevisible" VerticalOptions="FillAndExpand" Orientation="Vertical" BackgroundColor="White">
+            <Image HorizontalOptions="FillAndExpand" x:Name="imageview" VerticalOptions="FillAndExpand" Aspect="AspectFit" />
+            <Label Text="Back" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="#063649" TextColor="White" HeightRequest="45" HorizontalOptions="Fill" VerticalOptions="End" FontAttributes="Bold" FontSize="20">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="back" NumberOfTapsRequired="1" />
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Opacity="0.5" BackgroundColor="Black" IsVisible="{Binding IsBusy}">
+            <ActivityIndicator IsVisible="{Binding IsBusy}" HeightRequest="60" WidthRequest="60" IsRunning="{Binding IsBusy}" Color="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+    </Grid>
+</cc:BaseContentPage>

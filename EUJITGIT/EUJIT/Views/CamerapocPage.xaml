@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cc:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:cc="clr-namespace:EUJIT.CustomControl;assembly=EUJIT" x:Class="EUJIT.Views.CamerapocPage" xmlns:local="clr-namespace:EUJIT" xmlns:conv="clr-namespace:EUJIT.Converter;assembly=EUJIT" xmlns:res="clr-namespace:EUJIT.LangResource;assembly=EUJIT" Style="{StaticResource ContentPageStyle}">
+    <!--<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:camerapoc" x:Class="camerapoc.camerapocPage">
+    <ContentPage.Content>-->
+    <!--        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Padding="10,10,10,10">
+            <Button Text="Open Camera" VerticalOptions="Center" HorizontalOptions="Center" Margin="10,10,10,10" WidthRequest="100" TextColor="Black"  FontSize="14">
+            </Button>
+        </StackLayout>-->
+    <cc:BaseContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Red">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Image x:Name="PhotoImage" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Blue"/>
+            <Button x:Name="CameraButton" HorizontalOptions ="FillAndExpand" VerticalOptions="End" Text="Take Photo" Grid.Row="1" BackgroundColor="Yellow" />
+            <Button x:Name="GalleryButton" HorizontalOptions="FillAndExpand" VerticalOptions="End" Text="Select Photo" Grid.Row="2" BackgroundColor="Olive" />
+        </Grid>
+    </cc:BaseContentPage.Content>
+</cc:BaseContentPage>
+<!--    </ContentPage.Content>
+</ContentPage>-->

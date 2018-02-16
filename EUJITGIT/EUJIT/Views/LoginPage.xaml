@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cc:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:cc="clr-namespace:EUJIT.CustomControl;assembly=EUJIT" x:Class="EUJIT.Views.LoginPage" xmlns:res="clr-namespace:EUJIT.LangResource;assembly=EUJIT" Title="{res:Translate titleLoginPage}" Style="{StaticResource ContentPageStyle}">
+    <!-- NEW VIEW-->
+    <ScrollView>
+        <!-- <Grid HeightRequest="500" BackgroundColor="Red">-->
+        <Grid>
+            <Image Source="login_image.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFill" >
+            </Image>
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
+                <Frame CornerRadius="4" OutlineColor="Gray"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  BackgroundColor="White" HeightRequest="250" WidthRequest="280" Margin="0,250,0,30">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <!-- <RowDefinition />-->
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition Height="1" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Image Aspect="AspectFit" Grid.Row="0" Grid.Column="0" Source="Username.png" x:Name="UserIcon" WidthRequest="20" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="0,0,0,-25" />
+                            <cc:CustomEntry Grid.Row="0" Grid.Column="1" x:Name="Textbox" Focused="Handle_Focused" Unfocused="Handle_Unfocused" Text="{Binding UserName,Mode=TwoWay}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Placeholder="{res:Translate userNameText}" FontSize="14"
+                                PlaceholderColor="#BCBCBE" Margin="0,0,0,-25">
+                            </cc:CustomEntry>
+                            <BoxView Grid.Row="1" Grid.ColumnSpan="2" x:Name="BoxViewUserName" BackgroundColor="#BCBCBE" HeightRequest="1" VerticalOptions="End" HorizontalOptions="CenterAndExpand" WidthRequest="280">
+                            </BoxView>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition Height="1" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Row="0" Grid.Column="0" Aspect="AspectFit" Source="Password.png" x:Name="UserPassword" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="0,0,0,-25" />
+                            <cc:CustomEntry Grid.Row="0" Grid.Column="1" Text="{Binding Password,Mode=TwoWay}" x:Name="Password" Focused="Handle_Foocused" Unfocused="Handle_Unfoocused" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Placeholder="{res:Translate passwordText}" PlaceholderColor="#BCBCBE"
+                                FontSize="14" Margin="0,0,0,-25" IsPassword="true" >
+                            </cc:CustomEntry>
+                            <BoxView Grid.Row="1" Grid.ColumnSpan="2" x:Name="BoxViewPassword" BackgroundColor="#BCBCBE" HeightRequest="1" VerticalOptions="End" HorizontalOptions="CenterAndExpand" WidthRequest="280">
+                            </BoxView>
+                        </Grid>
+                        <StackLayout Grid.Row="2" Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" HeightRequest="12" Margin="0,0,0,-15">
+                            <cc:CustomSwitch HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" IsToggled="{Binding IsRemebered,Mode=TwoWay}" Margin="0,-15,0,0">
+                            </cc:CustomSwitch>
+                            <Label Text="{res:Translate rememberMe}" FontSize="16" TextColor="#616265" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="0,-15,0,0">
+                            </Label>
+                            <!--                            <Switch HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" IsToggled="{Binding IsRemebered,Mode=TwoWay}"></Switch>
+-->
+                        </StackLayout>
+                        <Button FontAttributes="Bold" Text="{res:Translate login}" TextColor="{Binding LoginButtonTextColor}" Grid.Row="3" x:Name="CheckLogin" Command="{Binding LoginCommand}" BackgroundColor="{Binding LoginButtonBackgroundColor}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="284"
+                            HeightRequest="42">
+                        </Button>
+                        <StackLayout Grid.Row="4" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            <Label Text="{res:Translate forgotPassword}" FontSize="12" TextColor="Gray" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="0,20,0,0">
+                            </Label>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ForgotPasswordCmd}" NumberOfTapsRequired="1" />
+                            </StackLayout.GestureRecognizers>
+                            <!--<Image Source="ForgotPassword.png" x:Name="ForgotPassword" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="0,20,0,0" />
+                            -->
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+            </StackLayout>
+            <StackLayout  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Opacity="0.5" BackgroundColor="Black" IsVisible="{Binding IsBusy}">
+                <ActivityIndicator IsVisible="{Binding IsBusy}" HeightRequest="60" WidthRequest="60" IsRunning="{Binding IsBusy}" Color="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+        </Grid>
+        <!-- </Grid>-->
+    </ScrollView>
+    <!--    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="AdientSansRegularLabelStyle" TargetType="Label">
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String" iOS="Adient Sans" Android="AdientSans-Regular.ttf#AdientSans-Regular" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="AdientSansRegularLabelStyleForCC" TargetType="cc:CustomEntry">
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String" iOS="Adient Sans" Android="AdientSans-Regular.ttf#AdientSans-Regular" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="AdientSansRegularLabelStyleForButton" TargetType="Button">
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String" iOS="Adient Sans" Android="AdientSans-Regular.ttf#AdientSans-Regular" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+</cc:BaseContentPage>

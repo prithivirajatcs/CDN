@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Plugin.ImageResizer</name>
+    </assembly>
+    <members>
+        <member name="T:Plugin.ImageResizer.CrossImageResizer">
+            <summary>
+            Cross platform ImageResizer implemenations
+            </summary>
+        </member>
+        <member name="P:Plugin.ImageResizer.CrossImageResizer.Current">
+            <summary>
+            Current settings to use
+            </summary>
+        </member>
+    </members>
+</doc>

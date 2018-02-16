@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Plugin.ImageResizer</name>
+    </assembly>
+    <members>
+        <member name="T:Plugin.ImageResizer.CrossImageResizer">
+            <summary>
+            Cross platform ImageResizer implemenations
+            </summary>
+        </member>
+        <member name="P:Plugin.ImageResizer.CrossImageResizer.Current">
+            <summary>
+            Current settings to use
+            </summary>
+        </member>
+        <member name="T:Plugin.ImageResizer.ImageResizerImplementation">
+            <summary>
+            Implementation for ImageResizer
+            </summary>
+        </member>
+        <member name="M:Plugin.ImageResizer.ImageResizerImplementation.ResizeImageWithAspectRatioAsync(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Resizes an image with the target width/height while maintaining aspect ratio.
+            </summary>
+            <param name="sourceImage">The source image</param>
+            <param name="targetWidth">The target width in pixels</param>
+            <param name="targetHeight">The target height in pixels</param>
+            <returns>byte[] of resized image</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,15 @@
+﻿<Properties StartupConfiguration="{76572B65-8E72-4030-88DC-6FC306C609DD}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
+  <MonoDevelop.Ide.Workbench ActiveDocument="EUJIT/Services/RestDataSource.cs">
+    <Files>
+      <File FileName="EUJIT/Services/RestDataSource.cs" Line="130" Column="26" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.EUJIT.Droid PreferredExecutionTarget="Android.Android_Accelerated_x86" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.EUJIT.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.B00A3F49-49E7-4B62-BD4B-95A72A826C65" automaticSigning="False" />
+</Properties>

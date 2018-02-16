@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cc:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:EUJIT" x:Class="EUJIT.Views.HomePage" xmlns:cc="clr-namespace:EUJIT.CustomControl;assembly=EUJIT" xmlns:res="clr-namespace:EUJIT.LangResource;assembly=EUJIT" Title="{res:Translate titleHomePage}" Style="{StaticResource ContentPageStyle}" xmlns:conv="clr-namespace:EUJIT.Converters;assembly=EUJIT">
+    <cc:BaseContentPage.Resources>
+        <ResourceDictionary>
+            <conv:ByteArrayToImageSourceConverter x:Key="byteArrayToImageSourceConverter" />
+        </ResourceDictionary>
+    </cc:BaseContentPage.Resources>
+    <Grid>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#eff4f5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Image Source="search.png" Grid.Row="0" WidthRequest="20" HorizontalOptions="Start" VerticalOptions="Center" HeightRequest="20" Margin="20,10,0,0" />
+            <cc:CustomEntry Grid.Row="0" Text="{Binding SearchString,Mode=TwoWay}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Placeholder="Search draft best practices here..." FontSize="15" PlaceholderColor="#b4c8ce" Margin="45,10,21,0">
+            </cc:CustomEntry>
+            <BoxView Margin="20,0,20,0" Grid.Row="1" BackgroundColor="#d1e482" HeightRequest="1" VerticalOptions="End" HorizontalOptions="FillAndExpand">
+            </BoxView>
+            <Label TextColor="#1b4e61" Grid.Row="3" Margin="20,10,0,0" Text="My Saved Drafts" Font="24" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+            <Label TextColor="#434343" Grid.Row="4" Margin="20,8,0,0" Text="{Binding Path=BPListCount, StringFormat='Showing {0} drafts'}" Font="10" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+            <ListView x:Name="listOfBestPractices" ItemsSource="{Binding BPList}" IsPullToRefreshEnabled="true" RefreshCommand="{Binding RefreshBestPracticesCommand}" IsRefreshing="{Binding IsPullToRefreshEnabled}" Grid.Row="5" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" SeparatorVisibility="None" HasUnevenRows="true"
+                Margin="0,0,0,0" BackgroundColor="#eff4f5">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <cc:ExtendedViewCell SelectedBackgroundColor="#eff4f5">
+                            <ViewCell.View>
+                                <Grid HorizontalOptions="FillAndExpand">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="1" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <StackLayout Grid.Row="0" Orientation="Horizontal" HeightRequest="20" Margin="20,15,20,0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" >
+                                        <Label TextColor="#434343"   Text="Impacted AMS Principle :" Font="13"  />
+                                    <Label TextColor="#434343"  Text="{Binding BestPractice.bpPrincple}" Font="10" Margin="0,2,0,0"/>
+                                    </StackLayout>
+<!--                                    <Label TextColor="#434343" Margin="20,20,20,0" Grid.Row="0" HeightRequest="11" Text="{Binding BestPractice.bpPrincple}" Font="10" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />-->
+                                    <Label TextColor="#969999" Margin="20,0,22,0" Grid.Row="1" HeightRequest="9" Text="{Binding BestPractice.bpCreatedDate}" Font="8" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+                                    <BoxView Margin="18,0,22,0" Grid.Row="2" BackgroundColor="#babcbd" HeightRequest="2" VerticalOptions="End" HorizontalOptions="FillAndExpand">
+                                    </BoxView>
+                                    <Label Margin="18,0,22,0" HeightRequest="24" Grid.Row="3" Text="{Binding BestPractice.PracticeHeader}" Font="16" TextColor="#1b4e61" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+                                    <cc:TLScrollView IsVisible="{Binding IsPracticePreviewVisible}" HeightRequest="69" Orientation="Horizontal" Margin="18,0,22,0" Grid.Row="4" ItemsSource="{Binding BestPractice.practiceImage}">
+                                        <cc:TLScrollView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <Image Grid.Row="0" VerticalOptions="FillAndExpand"  Aspect="AspectFit" WidthRequest="52" Source="{Binding testImageSource , Converter={StaticResource byteArrayToImageSourceConverter}}" />
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </cc:TLScrollView.ItemTemplate>
+                                    </cc:TLScrollView>
+                                    <StackLayout HeightRequest="20" Grid.Row="5" Orientation="Horizontal" Margin="18,0,22,5" Spacing="35">
+                                        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+                                            <Image Aspect="AspectFill" Source="edit.png" WidthRequest="20">
+                                            </Image>
+                                            <Label Text="Edit" TextColor="#5b5c5f" VerticalTextAlignment="Center" FontSize="15">
+                                            </Label>
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding EditCommand}" CommandParameter="{Binding}" NumberOfTapsRequired="1" />
+                                            </StackLayout.GestureRecognizers>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+                                            <Image Aspect="AspectFill" Source="delete.png" WidthRequest="20">
+                                            </Image>
+                                            <Label Text="Delete" TextColor="#5b5c5f" VerticalTextAlignment="Center" FontSize="15">
+                                            </Label>
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding DeleteCommand}" CommandParameter="{Binding}" NumberOfTapsRequired="1" />
+                                            </StackLayout.GestureRecognizers>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <BoxView Grid.Row="6" BackgroundColor="#b8cacf" HeightRequest="7" HorizontalOptions="FillAndExpand" VerticalOptions="End">
+                                    </BoxView>
+                                </Grid>
+                            </ViewCell.View>
+                        </cc:ExtendedViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Footer>
+                    <Label />
+                </ListView.Footer>
+            </ListView>
+        </Grid>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Opacity="0.5" BackgroundColor="Black" IsVisible="{Binding IsBusy}">
+            <ActivityIndicator IsVisible="{Binding IsBusy}" HeightRequest="60" WidthRequest="60" IsRunning="{Binding IsBusy}" Color="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+    </Grid>
+</cc:BaseContentPage>

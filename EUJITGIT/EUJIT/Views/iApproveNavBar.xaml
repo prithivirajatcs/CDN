@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="EUJIT.Views.iApproveNavBar">
+    <ContentView.Content>
+        <Grid x:Name="HeaderParentGrid" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" BackgroundColor="{StaticResource NavBarColor}" x:Name="MainContent">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Image x:Name="menuHamburger" Grid.Column="0" Source="Menubar.png" Margin="15,0,0,0" Aspect="AspectFit">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnHamburgerButtonPressed" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Grid x:Name="menuBack" Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="icon_back.png" Aspect="AspectFit" Margin="7,0,0,0">
+                    </Image>
+                    <!--Label Grid.Column="1" Text="BACK" TextColor="#B1D027" FontSize="9" VerticalOptions="CenterAndExpand">
+                    </Label-->
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnBackButtonPressed" NumberOfTapsRequired="1" />
+                    </Grid.GestureRecognizers>
+                </Grid>
+                <Label x:Name="HeaderTitle" Grid.Column="1" Text="iApprove" Style="{StaticResource NaviBarTitleStyle}" YAlign="Center" FontSize="16" FontAttributes="Bold">
+                </Label>
+                <Image x:Name="selectGallery" Grid.Column="2" Source="gallery.png" Aspect="AspectFit" Margin="0,0,10,0">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnSelectGalleryPressedAsync" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image x:Name="selectCamera" Grid.Column="3" Source="camera.png" Aspect="AspectFit" Margin="0,0,15,0">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnOpenCameraPressed" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image x:Name="CreateDraftImg" Grid.Column="2" Source="create_draft.png" Margin="0,0,10,0" Aspect="AspectFit">
+                    <!--Style="{StaticResource NaviBarIconStyle}"-->
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnCreateDraftPressed" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <!--<Image x:Name="LogOffPng" Grid.Column="3" Source="logout.png" Margin="0,0,15,0" Aspect="AspectFit" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnLogoutPressed" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>-->
+            </Grid>
+            <ContentPresenter Grid.Row="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+            <Grid Grid.Row="1" x:Name="userProfileSection" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" BackgroundColor="{StaticResource NavBarColor}">
+                    <Grid Margin="12,12,0,12">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <!--                        <StackLayout Grid.Row="0" Margin="0,0,0,6">
+                            <Label x:Name="UserName" FontSize="24" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="{StaticResource Primary}" />
+                        </StackLayout>
+                        <StackLayout Grid.Row="1" Margin="0,20,0,0">
+                            <Label x:Name="LoggedIn" FontSize="12" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" TextColor="{StaticResource SubTextForeColor}" />
+                        </StackLayout>-->
+                        <StackLayout Grid.Row="0" Margin="10,30,0,0" HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand">
+                            <Image Source="Adient.png" WidthRequest="83" HeightRequest="36">
+                            </Image>
+                        </StackLayout>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1" BackgroundColor="#063649" Margin="0,-8,0,0" HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" WidthRequest="400">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <!--                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />-->
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" BackgroundColor="{StaticResource NavBarColor}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                             <RowDefinition Height="Auto" />
+                             <RowDefinition Height="Auto" />
+                             <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <StackLayout Grid.Row="0" Margin="20,25,0,0">
+                            <Label x:Name="UserName" FontSize="24" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" TextColor="#ffffff" />
+                        </StackLayout>
+                        <StackLayout Grid.Row="1" Margin="20,4,0,20" Orientation="Vertical">
+                            <Label  x:Name="Version" FontSize="12" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" TextColor="#71939F" />
+
+                             <StackLayout Grid.Row="2" Margin="0,-5,0,0" BackgroundColor="Transparent" HeightRequest="25"  >
+                            <Label  Text="Consent for Pictures" VerticalOptions="CenterAndExpand" TextColor="#ffffff" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" BackgroundColor="Transparent"   FontSize="12"   />
+                                <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer  Tapped="Onconsent" NumberOfTapsRequired="1" />
+                        </StackLayout.GestureRecognizers>
+                             </StackLayout>
+                            
+                            <StackLayout Grid.Row="3" Margin="0,-8,0,0" BackgroundColor="Transparent" HeightRequest="25" >
+                             <Label Text="Privacy" FontSize="12" TextColor="#ffffff" VerticalOptions="CenterAndExpand"  BackgroundColor="Transparent" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"  />
+                           <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Privacy" NumberOfTapsRequired="1" />
+                        </StackLayout.GestureRecognizers>
+                             </StackLayout>
+                        </StackLayout>
+                         <StackLayout Grid.Row="4"  Margin="20,4,0,0" Orientation="Horizontal" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
+                        <Image Margin="12,18,0,0" Source="Logoff.png" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" x:Name="LogOffPng" />
+                        <Label Margin="12,12,0,20" Text="Logout" TextColor="#ffffff" FontSize="20" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" x:Name="LogOffText" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnLogoutPressed" NumberOfTapsRequired="1" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    </Grid>
+                   
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

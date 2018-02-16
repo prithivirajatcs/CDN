@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Plugin.ImageResizer.Abstractions</name>
+    </assembly>
+    <members>
+        <member name="T:Plugin.ImageResizer.Abstractions.IImageResizer">
+            <summary>
+            Interface for ImageResizer
+            </summary>
+        </member>
+        <member name="P:Plugin.ImageResizer.Abstractions.IImageResizer.NewHeight">
+            <summary>
+            The new height in pixels to be used for resizing the image
+            </summary>
+        </member>
+        <member name="P:Plugin.ImageResizer.Abstractions.IImageResizer.NewWidth">
+            <summary>
+            The new width in pixels to be used for resizing the image
+            </summary>
+        </member>
+        <member name="P:Plugin.ImageResizer.Abstractions.IImageResizer.Ratio">
+            <summary>
+            The ratio used to calculate the new width/height
+            </summary>
+        </member>
+        <member name="M:Plugin.ImageResizer.Abstractions.IImageResizer.ResizeImageWithAspectRatioAsync(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Resizes an image with the target width/height while maintaining aspect ratio.
+            </summary>
+            <param name="sourceImage">The source image</param>
+            <param name="targetWidth">The target width in pixels</param>
+            <param name="targetHeight">The target height in pixels</param>
+            <returns>byte[] of resized image</returns>
+        </member>
+        <member name="M:Plugin.ImageResizer.Abstractions.IImageResizer.ResizeImageWithAspectRatioAsync(System.IO.Stream,System.Int32,System.Int32)">
+            <summary>
+            Resizes an image with the target width/height while maintaining aspect ratio.
+            </summary>
+            <param name="sourceImage">The source image</param>
+            <param name="targetWidth">The target width in pixels</param>
+            <param name="targetHeight">The target height in pixels</param>
+            <returns>byte[] of resized image</returns>
+        </member>
+        <member name="M:Plugin.ImageResizer.Abstractions.IImageResizer.ReadBytesFully(System.IO.Stream)">
+            <summary>
+            Reads all bytes from a stream.
+            </summary>
+            <remarks>
+            Borrowed from Jon Skeet's solution on Stack Overflow: http://stackoverflow.com/a/221941/3033053
+            </remarks>
+            <param name="input"></param>
+            <returns>All bytes from the stream</returns>
+        </member>
+        <member name="M:Plugin.ImageResizer.Abstractions.IImageResizer.CalculateNewWidthAndHeight(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Calculates the new widths and heights to use based on the existing
+            widths/heights and the target widths/heights
+            </summary>
+            <remarks>
+            Populates Ratio, NewHeight and NewWidth properties
+            </remarks>
+            <param name="originalWidth"></param>
+            <param name="targetWidth"></param>
+            <param name="originalHeight"></param>
+            <param name="targetHeight"></param>
+        </member>
+        <member name="T:Plugin.ImageResizer.Abstractions.ImageResizerBase">
+            <summary>
+            Base class for resizing images on individual platforms.
+            </summary>
+        </member>
+        <member name="P:Plugin.ImageResizer.Abstractions.ImageResizerBase.NewHeight">
+            <summary>
+            The new height in pixels to be used for resizing the image
+            </summary>
+        </member>
+        <member name="P:Plugin.ImageResizer.Abstractions.ImageResizerBase.NewWidth">
+            <summary>
+            The new width in pixels to be used for resizing the image
+            </summary>
+        </member>
+        <member name="P:Plugin.ImageResizer.Abstractions.ImageResizerBase.Ratio">
+            <summary>
+            The ratio used to calculate the new width/height
+            </summary>
+        </member>
+        <member name="M:Plugin.ImageResizer.Abstractions.ImageResizerBase.ResizeImageWithAspectRatioAsync(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Resizes an image with the target width/height while maintaining aspect ratio.
+            </summary>
+            <param name="sourceImage">The source image</param>
+            <param name="targetWidth">The target width in pixels</param>
+            <param name="targetHeight">The target height in pixels</param>
+            <returns>byte[] of resized image</returns>
+        </member>
+        <member name="M:Plugin.ImageResizer.Abstractions.ImageResizerBase.ResizeImageWithAspectRatioAsync(System.IO.Stream,System.Int32,System.Int32)">
+            <summary>
+            Resizes an image with the target width/height while maintaining aspect ratio.
+            </summary>
+            <param name="sourceImage">The source image</param>
+            <param name="targetWidth">The target width in pixels</param>
+            <param name="targetHeight">The target height in pixels</param>
+            <returns>byte[] of resized image</returns>
+        </member>
+        <member name="M:Plugin.ImageResizer.Abstractions.ImageResizerBase.ReadBytesFully(System.IO.Stream)">
+            <summary>
+            Reads all bytes from a stream.
+            </summary>
+            <remarks>
+            Borrowed from Jon Skeet's solution on Stack Overflow: http://stackoverflow.com/a/221941/3033053
+            </remarks>
+            <param name="input"></param>
+            <returns>All bytes from the stream</returns>
+        </member>
+        <member name="M:Plugin.ImageResizer.Abstractions.ImageResizerBase.CalculateNewWidthAndHeight(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Calculates the new widths and heights to use based on the existing
+            widths/heights and the target widths/heights
+            </summary>
+            <remarks>
+            Populates Ratio, NewHeight and NewWidth properties
+            </remarks>
+            <param name="originalWidth"></param>
+            <param name="targetWidth"></param>
+            <param name="originalHeight"></param>
+            <param name="targetHeight"></param>
+        </member>
+    </members>
+</doc>

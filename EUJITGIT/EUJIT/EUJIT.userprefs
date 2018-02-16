@@ -1,0 +1,29 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Services/NavigationService.cs">
+    <Files>
+      <File FileName="Views/LoginPage.xaml.cs" Line="3" Column="12" />
+      <File FileName="Views/LoginPage.xaml" Line="2" Column="272" />
+      <File FileName="Views/CamerapocPage.xaml" Line="2" Column="368" />
+      <File FileName="Views/HomePage.xaml" Line="3" Column="7" />
+      <File FileName="Views/CreateDraft.xaml" Line="2" Column="180" />
+      <File FileName="Views/EditBestPracticePage.xaml" Line="15" Column="98" />
+      <File FileName="App.xaml.cs" Line="23" Column="12" />
+      <File FileName="App.xaml" Line="2" Column="129" />
+      <File FileName="Services/NavigationService.cs" Line="12" Column="30" />
+      <File FileName="Services/DataService.cs" Line="7" Column="12" />
+      <File FileName="Services/MessageHandler.cs" Line="3" Column="12" />
+      <File FileName="Services/RestDataSource.cs" Line="8" Column="12" />
+      <File FileName="Services/RestService.cs" Line="13" Column="16" />
+      <File FileName="Services/StubDataSource.cs" Line="8" Column="16" />
+      <File FileName="Services/UtilService.cs" Line="3" Column="12" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="../iOS/DependencyService/CommonUtility.cs" line="208" offsetX="791" offsetY="3105" expression="maxResizeFactor" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+  <MultiItemStartupConfigurations />
+</Properties>
